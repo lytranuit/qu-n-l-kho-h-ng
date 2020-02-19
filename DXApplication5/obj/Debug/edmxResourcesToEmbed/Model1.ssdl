@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="projectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="goods_issue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nchar" MaxLength="10" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="product_name" Type="varchar" MaxLength="50" />
+    <Property Name="product_code" Type="nchar" MaxLength="10" />
+    <Property Name="product_quantity" Type="int" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="note" Type="varchar" MaxLength="50" />
+    <Property Name="deleted" Type="int" />
+  </EntityType>
+  <EntityType Name="goods_receipt">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nchar" MaxLength="10" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="product_name" Type="nchar" MaxLength="255" />
+    <Property Name="product_code" Type="nchar" MaxLength="10" />
+    <Property Name="product_quantity" Type="int" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="note" Type="varchar" MaxLength="50" />
+    <Property Name="deleted" Type="int" />
+  </EntityType>
+  <EntityType Name="issue">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nchar" MaxLength="10" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="deleted" Type="int" />
+  </EntityType>
+  <EntityType Name="issue_product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="issue_id" Type="int" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="deleted" Type="int" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nchar" MaxLength="10" />
+    <Property Name="name" Type="nchar" MaxLength="20" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="deleted" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="receipt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nchar" MaxLength="10" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="deleted" Type="int" />
+  </EntityType>
+  <EntityType Name="receipt_product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="receipt_id" Type="int" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="deleted" Type="int" />
+  </EntityType>
+  <EntityContainer Name="projectModelStoreContainer">
+    <EntitySet Name="goods_issue" EntityType="Self.goods_issue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="goods_receipt" EntityType="Self.goods_receipt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="issue" EntityType="Self.issue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="issue_product" EntityType="Self.issue_product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="receipt" EntityType="Self.receipt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="receipt_product" EntityType="Self.receipt_product" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
