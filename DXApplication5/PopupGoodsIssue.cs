@@ -27,10 +27,6 @@ namespace DXApplication5
 
         private void PopupGoodsIssue_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'projectDataSet1.product' table. You can move, or remove it, as needed.
-            this.productTableAdapter.Fill(this.projectDataSet1.product);
-            // TODO: This line of code loads data into the 'projectDataSet1.issue_product' table. You can move, or remove it, as needed.
-            this.issue_productTableAdapter.Fill(this.projectDataSet1.issue_product);
             string queryString = "SELECT id,CONCAT(code,' ',name) as name FROM dbo.product WHERE deleted = 0";
             string connectionString = "Data Source=.;Initial Catalog=project;Integrated Security=True";
 
@@ -66,44 +62,33 @@ namespace DXApplication5
 
                 issue issue = db.issues.First(c => c.id == data_id);
                 issue.date = date.Value;
+                var list_deleted = db.issue_product.Where(c=>c.issue_id == data_id).ToList();
+                list_deleted.ForEach(a => a.deleted = 1);
+
+                var count_product = 0;
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-
-                    int id = !(row.Cells[0].Value is DBNull) ? Convert.ToInt32(row.Cells[0].Value) : 0;
+                    
                     int product_id = Convert.ToInt32(row.Cells[1].Value);
                     int new_quanity = Convert.ToInt32(row.Cells[2].Value);
-                    ////
-                    if (id > 0)
+                    issue_product issue_product = new issue_product();
+                    if (product_id > 0 && new_quanity > 0)
                     {
-                        issue_product issue_product = db.issue_product.First(c => c.id == id);
-
-                        if (product_id > 0 && new_quanity > 0)
-                        {
-                            issue_product.product_id = product_id;
-                            issue_product.quantity = new_quanity;
-                            issue_product.issue_id = issue.id;
-                        }
-                        else
-                        {
-                            issue_product.deleted = 1;
-                        }
+                        issue_product.product_id = product_id;
+                        issue_product.quantity = new_quanity;
+                        issue_product.issue_id = issue.id;
+                        db.issue_product.Add(issue_product);
+                        count_product++;
                     }
-                    else
-                    {
-                        issue_product issue_product = new issue_product();
-                        if (product_id > 0 && new_quanity > 0)
-                        {
-                            issue_product.product_id = product_id;
-                            issue_product.quantity = new_quanity;
-                            issue_product.issue_id = issue.id;
-                            db.issue_product.Add(issue_product);
-                        }
-
-                    }
-                    //////
 
                 }
+
+                if (count_product == 0)
+                {
+                    issue.deleted = 1;
+                }
                 db.SaveChanges();
+                MessageBox.Show("Update Success!");
             }
             else
             {
@@ -111,7 +96,7 @@ namespace DXApplication5
                 issue.date = date.Value;
                 db.issues.Add(issue);
                 db.SaveChanges();
-
+                var count_product = 0;
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     int product_id = Convert.ToInt32(row.Cells[1].Value);
@@ -123,13 +108,36 @@ namespace DXApplication5
                         issue_product.quantity = new_quanity;
                         issue_product.issue_id = issue.id;
                         db.issue_product.Add(issue_product);
+                        count_product++;
                     }
 
+                }
+
+                if (count_product == 0)
+                {
+                    issue.deleted = 1;
                 }
                 db.SaveChanges();
                 MessageBox.Show("Insert Success!");
             }
 
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == dataGridView1.NewRowIndex || e.RowIndex < 0)
+                return;
+            
+            //Check if click is on specific column 
+            if (e.ColumnIndex == dataGridView1.Columns["deleted"].Index)
+            {
+                //Put some logic here, for example to remove row from your binding list.
+                dataGridView1.Rows.RemoveAt(e.RowIndex);
+
+                // Or
+                // var data = (Product)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                // do something 
+            }
         }
     }
 }

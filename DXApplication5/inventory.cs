@@ -12,16 +12,18 @@ namespace DXApplication5
     using System;
     using System.Collections.Generic;
     
-    public partial class goods_receipt
+    public partial class inventory
     {
-        public int Id { get; set; }
-        public string code { get; set; }
+        public inventory()
+        {
+            this.quantity = 0;
+            this.deleted = 0;
+        }
+    
+        public int id { get; set; }
         public Nullable<int> product_id { get; set; }
-        public string product_name { get; set; }
-        public string product_code { get; set; }
-        public Nullable<int> product_quantity { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
-        public string note { get; set; }
+        public string month { get; set; }
+        public Nullable<int> quantity { get; set; }
         public Nullable<int> deleted { get; set; }
     }
 }

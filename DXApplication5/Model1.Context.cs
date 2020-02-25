@@ -25,8 +25,7 @@ namespace DXApplication5
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<goods_issue> goods_issue { get; set; }
-        public DbSet<goods_receipt> goods_receipt { get; set; }
+        public DbSet<inventory> inventories { get; set; }
         public DbSet<issue> issues { get; set; }
         public DbSet<issue_product> issue_product { get; set; }
         public DbSet<product> products { get; set; }

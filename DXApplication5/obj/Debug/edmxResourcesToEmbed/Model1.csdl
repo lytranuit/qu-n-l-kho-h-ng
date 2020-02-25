@@ -1,32 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="projectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="goods_issue">
+  <EntityType Name="inventory">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="product_id" Type="Int32" />
-    <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="product_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="product_quantity" Type="Int32" />
-    <Property Name="date" Type="DateTime" Precision="3" />
-    <Property Name="note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="deleted" Type="Int32" />
-  </EntityType>
-  <EntityType Name="goods_receipt">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="product_id" Type="Int32" />
-    <Property Name="product_name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-    <Property Name="product_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="product_quantity" Type="Int32" />
-    <Property Name="date" Type="DateTime" Precision="3" />
-    <Property Name="note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="deleted" Type="Int32" />
+    <Property Name="month" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="quantity" Type="Int32" DefaultValue="0" />
+    <Property Name="deleted" Type="Int32" DefaultValue="0" />
   </EntityType>
   <EntityType Name="issue">
     <Key>
@@ -77,8 +59,7 @@
     <Property Name="deleted" Type="Int32" DefaultValue="0" />
   </EntityType>
   <EntityContainer Name="projectEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="goods_issue" EntityType="Self.goods_issue" />
-    <EntitySet Name="goods_receipt" EntityType="Self.goods_receipt" />
+    <EntitySet Name="inventories" EntityType="Self.inventory" />
     <EntitySet Name="issues" EntityType="Self.issue" />
     <EntitySet Name="issue_product" EntityType="Self.issue_product" />
     <EntitySet Name="products" EntityType="Self.product" />

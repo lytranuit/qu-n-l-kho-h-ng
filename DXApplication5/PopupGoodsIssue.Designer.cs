@@ -30,24 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.projectDataSet1 = new DXApplication5.projectDataSet1();
+            this.issueproductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cancle = new DevExpress.XtraEditors.SimpleButton();
             this.save = new DevExpress.XtraEditors.SimpleButton();
             this.date = new System.Windows.Forms.DateTimePicker();
             this.code = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.projectDataSet1 = new DXApplication5.projectDataSet1();
-            this.issueproductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.issue_productTableAdapter = new DXApplication5.projectDataSet1TableAdapters.issue_productTableAdapter();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productTableAdapter = new DXApplication5.projectDataSet1TableAdapters.productTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleted = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueproductBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -58,13 +59,30 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.productidDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn});
+            this.quantityDataGridViewTextBoxColumn,
+            this.deleted});
             this.dataGridView1.DataSource = this.issueproductBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(25, 63);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(529, 365);
             this.dataGridView1.TabIndex = 42;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataMember = "product";
+            this.productBindingSource.DataSource = this.projectDataSet1;
+            // 
+            // projectDataSet1
+            // 
+            this.projectDataSet1.DataSetName = "projectDataSet1";
+            this.projectDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // issueproductBindingSource
+            // 
+            this.issueproductBindingSource.DataMember = "issue_product";
+            this.issueproductBindingSource.DataSource = this.projectDataSet1;
             // 
             // cancle
             // 
@@ -118,24 +136,9 @@
             this.label1.TabIndex = 36;
             this.label1.Text = "Mã hóa đơn";
             // 
-            // projectDataSet1
-            // 
-            this.projectDataSet1.DataSetName = "projectDataSet1";
-            this.projectDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // issueproductBindingSource
-            // 
-            this.issueproductBindingSource.DataMember = "issue_product";
-            this.issueproductBindingSource.DataSource = this.projectDataSet1;
-            // 
             // issue_productTableAdapter
             // 
             this.issue_productTableAdapter.ClearBeforeFill = true;
-            // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataMember = "product";
-            this.productBindingSource.DataSource = this.projectDataSet1;
             // 
             // productTableAdapter
             // 
@@ -166,6 +169,11 @@
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Số lượng";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             // 
+            // deleted
+            // 
+            this.deleted.HeaderText = "Xóa";
+            this.deleted.Name = "deleted";
+            // 
             // PopupGoodsIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -182,9 +190,9 @@
             this.Text = "Hóa đơn xuất";
             this.Load += new System.EventHandler(this.PopupGoodsIssue_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueproductBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,5 +215,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn productidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn deleted;
     }
 }

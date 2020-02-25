@@ -5,32 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="projectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="goods_issue">
+        <EntityType Name="inventory">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="code" Type="nchar" MaxLength="10" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_id" Type="int" />
-          <Property Name="product_name" Type="varchar" MaxLength="50" />
-          <Property Name="product_code" Type="nchar" MaxLength="10" />
-          <Property Name="product_quantity" Type="int" />
-          <Property Name="date" Type="datetime" />
-          <Property Name="note" Type="varchar" MaxLength="50" />
-          <Property Name="deleted" Type="int" />
-        </EntityType>
-        <EntityType Name="goods_receipt">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="code" Type="nchar" MaxLength="10" />
-          <Property Name="product_id" Type="int" />
-          <Property Name="product_name" Type="nchar" MaxLength="255" />
-          <Property Name="product_code" Type="nchar" MaxLength="10" />
-          <Property Name="product_quantity" Type="int" />
-          <Property Name="date" Type="datetime" />
-          <Property Name="note" Type="varchar" MaxLength="50" />
+          <Property Name="month" Type="varchar" MaxLength="50" />
+          <Property Name="quantity" Type="int" />
           <Property Name="deleted" Type="int" />
         </EntityType>
         <EntityType Name="issue">
@@ -82,8 +64,7 @@
           <Property Name="deleted" Type="int" />
         </EntityType>
         <EntityContainer Name="projectModelStoreContainer">
-          <EntitySet Name="goods_issue" EntityType="Self.goods_issue" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="goods_receipt" EntityType="Self.goods_receipt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inventory" EntityType="Self.inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="issue" EntityType="Self.issue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="issue_product" EntityType="Self.issue_product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
@@ -95,33 +76,15 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="projectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="goods_issue">
+        <EntityType Name="inventory">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="product_id" Type="Int32" />
-          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="product_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="product_quantity" Type="Int32" />
-          <Property Name="date" Type="DateTime" Precision="3" />
-          <Property Name="note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="deleted" Type="Int32" />
-        </EntityType>
-        <EntityType Name="goods_receipt">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="product_id" Type="Int32" />
-          <Property Name="product_name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Name="product_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="product_quantity" Type="Int32" />
-          <Property Name="date" Type="DateTime" Precision="3" />
-          <Property Name="note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="deleted" Type="Int32" />
+          <Property Name="month" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="Int32" DefaultValue="0" />
+          <Property Name="deleted" Type="Int32" DefaultValue="0" />
         </EntityType>
         <EntityType Name="issue">
           <Key>
@@ -172,8 +135,7 @@
           <Property Name="deleted" Type="Int32" DefaultValue="0" />
         </EntityType>
         <EntityContainer Name="projectEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="goods_issue" EntityType="Self.goods_issue" />
-          <EntitySet Name="goods_receipt" EntityType="Self.goods_receipt" />
+          <EntitySet Name="inventories" EntityType="Self.inventory" />
           <EntitySet Name="issues" EntityType="Self.issue" />
           <EntitySet Name="issue_product" EntityType="Self.issue_product" />
           <EntitySet Name="products" EntityType="Self.product" />
@@ -186,32 +148,13 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="projectModelStoreContainer" CdmEntityContainer="projectEntities">
-          <EntitySetMapping Name="goods_issue">
-            <EntityTypeMapping TypeName="projectModel.goods_issue">
-              <MappingFragment StoreEntitySet="goods_issue">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="code" ColumnName="code" />
+          <EntitySetMapping Name="inventories">
+            <EntityTypeMapping TypeName="projectModel.inventory">
+              <MappingFragment StoreEntitySet="inventory">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="product_code" ColumnName="product_code" />
-                <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="note" ColumnName="note" />
-                <ScalarProperty Name="deleted" ColumnName="deleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="goods_receipt">
-            <EntityTypeMapping TypeName="projectModel.goods_receipt">
-              <MappingFragment StoreEntitySet="goods_receipt">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="product_code" ColumnName="product_code" />
-                <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="deleted" ColumnName="deleted" />
               </MappingFragment>
             </EntityTypeMapping>

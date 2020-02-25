@@ -184,17 +184,8 @@ namespace DXApplication5
 
         private void simpleButton16_Click(object sender, EventArgs e)
         {
-
-            string valueSearch = comboBox1.SelectedValue.ToString().Trim();
-            string queryString = "SELECT CONCAT(b.code,b.name) as product_name,SUM(a.quantity) as inventory FROM (select b.product_id,SUM(b.quantity) as quantity ";
-            queryString += " from receipt as a Join receipt_product as b ON a.id = b.receipt_id";
-            queryString += " where a.deleted = 0 and b.deleted = 0 and CONCAT(DATEPART(Year, a.date) ,'-', DATEPART(Month, a.date)) = @search ";
-            queryString += " GROUP BY product_id";
-            queryString += " UNION";
-            queryString += " select b.product_id,SUM(-b.quantity) as quantity";
-            queryString += " from issue as a Join issue_product as b ON a.id = b.issue_id";
-            queryString += " where a.deleted = 0 and b.deleted = 0 and CONCAT(DATEPART(Year, a.date) ,'-', DATEPART(Month, a.date)) = @search ";
-            queryString += " GROUP BY product_id) as a JOIN product as b ON a.product_id = b.id where b.deleted = 0 GROUP BY b.id,b.code,b.name";
+            string valueSearch = dateTimePicker1.Value.ToString("yyyy-M").Trim();
+            string queryString = "SELECT a.id as product_id,CONCAT(a.code,a.name) as product_name,b.quantity as inventory FROM dbo.product as a JOIN dbo.inventory as b ON a.id = b.product_id WHERE a.deleted = 0 and b.deleted = 0 and b.month = @search";
             string connectionString = "Data Source=.;Initial Catalog=project;Integrated Security=True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -202,12 +193,12 @@ namespace DXApplication5
                 command.Parameters.AddWithValue("@search", valueSearch);
 
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-                var ds = new DataSet();
-                dataAdapter.Fill(ds);
-                dataGridView5.DataSource = ds.Tables[0];
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dt);
+                dataGridView5.DataSource = dt;
                 connection.Close();
             }
-           }
+       }
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -220,6 +211,53 @@ namespace DXApplication5
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton17_Click(object sender, EventArgs e)
+        {
+            string valueSearch = dateTimePicker1.Value.ToString("yyyy-M").Trim();
+            string queryString = "SELECT b.id as product_id,CONCAT(b.code,b.name) as product_name,SUM(a.quantity) as inventory FROM (select b.product_id,SUM(b.quantity) as quantity ";
+            queryString += " from receipt as a Join receipt_product as b ON a.id = b.receipt_id";
+            queryString += " where a.deleted = 0 and b.deleted = 0 and CONCAT(DATEPART(Year, a.date) ,'-', DATEPART(Month, a.date)) = @search ";
+            queryString += " GROUP BY product_id";
+            queryString += " UNION";
+            queryString += " select b.product_id,SUM(-b.quantity) as quantity";
+            queryString += " from issue as a Join issue_product as b ON a.id = b.issue_id";
+            queryString += " where a.deleted = 0 and b.deleted = 0 and CONCAT(DATEPART(Year, a.date) ,'-', DATEPART(Month, a.date)) = @search ";
+            queryString += " GROUP BY product_id) as a JOIN product as b ON a.product_id = b.id where b.deleted = 0 GROUP BY b.id,b.code,b.name";
+            
+            string connectionString = "Data Source=.;Initial Catalog=project;Integrated Security=True";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@search", valueSearch);
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dt);
+                dataGridView5.DataSource = dt;
+                ////SAVE DATA
+
+                projectEntities db = new projectEntities();
+                var list_deleted = db.inventories.Where(c => c.month == valueSearch).ToList();
+                list_deleted.ForEach(a => a.deleted = 1);
+                foreach (DataRow row in dt.Rows)
+                {
+                    inventory inventory = new inventory();
+                    inventory.product_id = Convert.ToInt32(row["product_id"]);
+                    inventory.quantity = Convert.ToInt32(row["inventory"]);
+                    inventory.month = valueSearch;
+                    db.inventories.Add(inventory);
+                }
+                db.SaveChanges();
+                connection.Close();
+            }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }

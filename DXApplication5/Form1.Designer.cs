@@ -31,17 +31,24 @@
             this.components = new System.ComponentModel.Container();
             this.navigationPage3 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.goodsissueBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.projectDataSet2 = new DXApplication5.projectDataSet2();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receiptBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.projectDataSet = new DXApplication5.projectDataSet();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.simpleButton13 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton14 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
+            this.goodsissueBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.goodsreceiptBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.projectDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receiptBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
@@ -55,67 +62,58 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.goodsreceiptBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.projectDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.search = new DevExpress.XtraEditors.SimpleButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.navigationPane1 = new DevExpress.XtraBars.Navigation.NavigationPane();
-            this.navigationPage5 = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.goods_issueTableAdapter1 = new DXApplication5.projectDataSet2TableAdapters.goods_issueTableAdapter();
-            this.goods_receiptTableAdapter1 = new DXApplication5.projectDataSet2TableAdapters.goods_receiptTableAdapter();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.productTableAdapter = new DXApplication5.projectDataSet2TableAdapters.productTableAdapter();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.projectDataSet = new DXApplication5.projectDataSet();
             this.productBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.navigationPane1 = new DevExpress.XtraBars.Navigation.NavigationPane();
+            this.navigationPage5 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.simpleButton17 = new DevExpress.XtraEditors.SimpleButton();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productTableAdapter1 = new DXApplication5.projectDataSetTableAdapters.productTableAdapter();
             this.productBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.receiptBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.receiptTableAdapter = new DXApplication5.projectDataSetTableAdapters.receiptTableAdapter();
-            this.receiptBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.product_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.product_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.navigationPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goodsissueBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet2)).BeginInit();
             this.navigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.goodsreceiptBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet2BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource)).BeginInit();
             this.navigationPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.goodsreceiptBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet2BindingSource)).BeginInit();
             this.navigationPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
             this.navigationPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // navigationPage3
@@ -148,15 +146,36 @@
             this.dataGridView4.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentDoubleClick);
             this.dataGridView4.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView4_CellMouseDoubleClick);
             // 
-            // goodsissueBindingSource1
+            // id
             // 
-            this.goodsissueBindingSource1.DataMember = "goods_issue";
-            this.goodsissueBindingSource1.DataSource = this.projectDataSet2;
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
-            // projectDataSet2
+            // code
             // 
-            this.projectDataSet2.DataSetName = "projectDataSet2";
-            this.projectDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.code.DataPropertyName = "code";
+            this.code.HeaderText = "Mã hóa đơn";
+            this.code.Name = "code";
+            this.code.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Ngày";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            // 
+            // receiptBindingSource1
+            // 
+            this.receiptBindingSource1.DataMember = "receipt";
+            this.receiptBindingSource1.DataSource = this.projectDataSet;
+            // 
+            // projectDataSet
+            // 
+            this.projectDataSet.DataSetName = "projectDataSet";
+            this.projectDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // simpleButton12
             // 
@@ -237,15 +256,37 @@
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             this.dataGridView3.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseDoubleClick_1);
             // 
-            // goodsreceiptBindingSource1
+            // idDataGridViewTextBoxColumn
             // 
-            this.goodsreceiptBindingSource1.DataMember = "goods_receipt";
-            this.goodsreceiptBindingSource1.DataSource = this.projectDataSet2BindingSource;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
-            // projectDataSet2BindingSource
+            // codeDataGridViewTextBoxColumn
             // 
-            this.projectDataSet2BindingSource.DataSource = this.projectDataSet2;
-            this.projectDataSet2BindingSource.Position = 0;
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Mã hóa đơn";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            // 
+            // dateDataGridViewTextBoxColumn1
+            // 
+            this.dateDataGridViewTextBoxColumn1.DataPropertyName = "date";
+            this.dateDataGridViewTextBoxColumn1.HeaderText = "Ngày";
+            this.dateDataGridViewTextBoxColumn1.Name = "dateDataGridViewTextBoxColumn1";
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // receiptBindingSource
+            // 
+            this.receiptBindingSource.DataMember = "receipt";
+            this.receiptBindingSource.DataSource = this.projectDataSet;
             // 
             // simpleButton8
             // 
@@ -410,7 +451,7 @@
             this.idDataGridViewTextBoxColumn1,
             this.codeDataGridViewTextBoxColumn1,
             this.nameDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.productBindingSource1;
+            this.dataGridView1.DataSource = this.productBindingSource2;
             this.dataGridView1.Location = new System.Drawing.Point(3, 55);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
@@ -419,10 +460,30 @@
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
-            // productBindingSource1
+            // idDataGridViewTextBoxColumn1
             // 
-            this.productBindingSource1.DataMember = "product";
-            this.productBindingSource1.DataSource = this.projectDataSet2;
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // codeDataGridViewTextBoxColumn1
+            // 
+            this.codeDataGridViewTextBoxColumn1.DataPropertyName = "code";
+            this.codeDataGridViewTextBoxColumn1.HeaderText = "Mã sản phẩm";
+            this.codeDataGridViewTextBoxColumn1.Name = "codeDataGridViewTextBoxColumn1";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // productBindingSource2
+            // 
+            this.productBindingSource2.DataMember = "product";
+            this.productBindingSource2.DataSource = this.projectDataSet;
             // 
             // simpleButton1
             // 
@@ -433,6 +494,10 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Add";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // productBindingSource1
+            // 
+            this.productBindingSource1.DataMember = "product";
             // 
             // navigationPane1
             // 
@@ -458,7 +523,8 @@
             // navigationPage5
             // 
             this.navigationPage5.Caption = "Báo cáo tồn kho";
-            this.navigationPage5.Controls.Add(this.comboBox1);
+            this.navigationPage5.Controls.Add(this.dateTimePicker1);
+            this.navigationPage5.Controls.Add(this.simpleButton17);
             this.navigationPage5.Controls.Add(this.dataGridView5);
             this.navigationPage5.Controls.Add(this.simpleButton16);
             this.navigationPage5.Controls.Add(this.label1);
@@ -466,11 +532,32 @@
             this.navigationPage5.Size = new System.Drawing.Size(877, 610);
             this.navigationPage5.Paint += new System.Windows.Forms.PaintEventHandler(this.navigationPage5_Paint);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "yyyy-MM";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(68, 3);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker1.TabIndex = 8;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // simpleButton17
+            // 
+            this.simpleButton17.Location = new System.Drawing.Point(799, 4);
+            this.simpleButton17.Name = "simpleButton17";
+            this.simpleButton17.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton17.TabIndex = 7;
+            this.simpleButton17.Text = "Tính lại";
+            this.simpleButton17.Click += new System.EventHandler(this.simpleButton17_Click);
+            // 
             // dataGridView5
             // 
             this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.product_id,
             this.product_name,
             this.inventory});
             this.dataGridView5.Location = new System.Drawing.Point(17, 44);
@@ -482,11 +569,11 @@
             // 
             // simpleButton16
             // 
-            this.simpleButton16.Location = new System.Drawing.Point(245, 4);
+            this.simpleButton16.Location = new System.Drawing.Point(297, 4);
             this.simpleButton16.Name = "simpleButton16";
             this.simpleButton16.Size = new System.Drawing.Size(75, 23);
             this.simpleButton16.TabIndex = 4;
-            this.simpleButton16.Text = "Search";
+            this.simpleButton16.Text = "Xem";
             this.simpleButton16.Click += new System.EventHandler(this.simpleButton16_Click);
             // 
             // label1
@@ -498,51 +585,9 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Tháng";
             // 
-            // goods_issueTableAdapter1
-            // 
-            this.goods_issueTableAdapter1.ClearBeforeFill = true;
-            // 
-            // goods_receiptTableAdapter1
-            // 
-            this.goods_receiptTableAdapter1.ClearBeforeFill = true;
-            // 
             // bindingSource1
             // 
             this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
-            // 
-            // productTableAdapter
-            // 
-            this.productTableAdapter.ClearBeforeFill = true;
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // codeDataGridViewTextBoxColumn1
-            // 
-            this.codeDataGridViewTextBoxColumn1.DataPropertyName = "code";
-            this.codeDataGridViewTextBoxColumn1.HeaderText = "Mã sản phẩm";
-            this.codeDataGridViewTextBoxColumn1.Name = "codeDataGridViewTextBoxColumn1";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Tên sản phẩm";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // projectDataSet
-            // 
-            this.projectDataSet.DataSetName = "projectDataSet";
-            this.projectDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productBindingSource2
-            // 
-            this.productBindingSource2.DataMember = "product";
-            this.productBindingSource2.DataSource = this.projectDataSet;
             // 
             // productTableAdapter1
             // 
@@ -553,78 +598,22 @@
             this.productBindingSource3.DataMember = "product";
             this.productBindingSource3.DataSource = this.projectDataSet;
             // 
-            // receiptBindingSource
-            // 
-            this.receiptBindingSource.DataMember = "receipt";
-            this.receiptBindingSource.DataSource = this.projectDataSet;
-            // 
             // receiptTableAdapter
             // 
             this.receiptTableAdapter.ClearBeforeFill = true;
             // 
-            // receiptBindingSource1
+            // product_code
             // 
-            this.receiptBindingSource1.DataMember = "receipt";
-            this.receiptBindingSource1.DataSource = this.projectDataSet;
+            this.product_code.DataPropertyName = "code";
+            this.product_code.HeaderText = "Mã sản phẩm";
+            this.product_code.Name = "product_code";
             // 
-            // id
+            // product_id
             // 
-            this.id.DataPropertyName = "Id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // code
-            // 
-            this.code.DataPropertyName = "code";
-            this.code.HeaderText = "Mã hóa đơn";
-            this.code.Name = "code";
-            this.code.ReadOnly = true;
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Ngày";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Mã hóa đơn";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            // 
-            // dateDataGridViewTextBoxColumn1
-            // 
-            this.dateDataGridViewTextBoxColumn1.DataPropertyName = "date";
-            this.dateDataGridViewTextBoxColumn1.HeaderText = "Ngày";
-            this.dateDataGridViewTextBoxColumn1.Name = "dateDataGridViewTextBoxColumn1";
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            this.typeDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "value";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(77, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(145, 24);
-            this.comboBox1.TabIndex = 6;
-            this.comboBox1.ValueMember = "value";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.product_id.DataPropertyName = "product_id";
+            this.product_id.HeaderText = "product_id";
+            this.product_id.Name = "product_id";
+            this.product_id.Visible = false;
             // 
             // product_name
             // 
@@ -651,20 +640,23 @@
             this.navigationPage3.ResumeLayout(false);
             this.navigationPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.goodsissueBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet2)).EndInit();
             this.navigationPage2.ResumeLayout(false);
             this.navigationPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.goodsreceiptBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet2BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource)).EndInit();
             this.navigationPage4.ResumeLayout(false);
             this.navigationPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.goodsreceiptBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet2BindingSource)).EndInit();
             this.navigationPage1.ResumeLayout(false);
             this.navigationPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).EndInit();
             this.navigationPane1.ResumeLayout(false);
@@ -672,11 +664,7 @@
             this.navigationPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -713,22 +701,15 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton14;
         private DevExpress.XtraEditors.SimpleButton simpleButton15;
         private System.Windows.Forms.DataGridView dataGridView4;
-        private projectDataSet2 projectDataSet2;
         private System.Windows.Forms.BindingSource goodsissueBindingSource1;
-        private projectDataSet2TableAdapters.goods_issueTableAdapter goods_issueTableAdapter1;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.BindingSource projectDataSet2BindingSource;
         private System.Windows.Forms.BindingSource goodsreceiptBindingSource1;
-        private projectDataSet2TableAdapters.goods_receiptTableAdapter goods_receiptTableAdapter1;
         private System.Windows.Forms.BindingSource productBindingSource1;
-        private projectDataSet2TableAdapters.productTableAdapter productTableAdapter;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPage5;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SimpleButton simpleButton16;
         private System.Windows.Forms.DataGridView dataGridView5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private projectDataSet projectDataSet;
         private System.Windows.Forms.BindingSource productBindingSource2;
         private projectDataSetTableAdapters.productTableAdapter productTableAdapter1;
@@ -743,7 +724,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton17;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product_code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn product_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn inventory;
     }

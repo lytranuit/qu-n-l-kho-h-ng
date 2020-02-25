@@ -57,44 +57,33 @@ namespace DXApplication5
 
                 receipt receipt = db.receipts.First(c =>c.id == data_id);
                 receipt.date = date.Value;
+
+                var list_deleted = db.receipt_product.Where(c => c.receipt_id == data_id).ToList();
+                list_deleted.ForEach(a => a.deleted = 1);
+                var count_product = 0;
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-
-                    int id = !(row.Cells[0].Value is DBNull) ? Convert.ToInt32(row.Cells[0].Value) : 0;
+                    
                     int product_id = Convert.ToInt32(row.Cells[1].Value);
                     int new_quanity = Convert.ToInt32(row.Cells[2].Value);
-                    ////
-                    if (id > 0)
+                    receipt_product receipt_product = new receipt_product();
+                    if (product_id > 0 && new_quanity > 0)
                     {
-                        receipt_product receipt_product = db.receipt_product.First(c=>c.id == id);
-
-                        if (product_id > 0 && new_quanity > 0)
-                        {
-                            receipt_product.product_id = product_id;
-                            receipt_product.quantity = new_quanity;
-                            receipt_product.receipt_id = receipt.id;
-                        }
-                        else
-                        {
-                            receipt_product.deleted = 1;
-                        }
-                    }
-                    else
-                    {
-                        receipt_product receipt_product = new receipt_product();
-                        if (product_id > 0 && new_quanity > 0)
-                        {
-                            receipt_product.product_id = product_id;
-                            receipt_product.quantity = new_quanity;
-                            receipt_product.receipt_id = receipt.id;
-                            db.receipt_product.Add(receipt_product);
-                        }
-                        
+                        receipt_product.product_id = product_id;
+                        receipt_product.quantity = new_quanity;
+                        receipt_product.receipt_id = receipt.id;
+                        db.receipt_product.Add(receipt_product);
+                        count_product++;
                     }
                     //////
 
                 }
+                if(count_product == 0)
+                {
+                    receipt.deleted = 1;
+                }
                 db.SaveChanges();
+                MessageBox.Show("Update Success!");
             }
             else
             {
@@ -102,7 +91,7 @@ namespace DXApplication5
                 receipt.date = date.Value; 
                 db.receipts.Add(receipt);
                 db.SaveChanges();
-
+                var count_product = 0;
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     int product_id = Convert.ToInt32(row.Cells[1].Value);
@@ -114,8 +103,14 @@ namespace DXApplication5
                         receipt_product.quantity = new_quanity;
                         receipt_product.receipt_id = receipt.id;
                         db.receipt_product.Add(receipt_product);
+                        count_product++;
                     }
                     
+                }
+
+                if (count_product == 0)
+                {
+                    receipt.deleted = 1;
                 }
                 db.SaveChanges();
                 MessageBox.Show("Insert Success!");
@@ -132,6 +127,23 @@ namespace DXApplication5
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == dataGridView1.NewRowIndex || e.RowIndex < 0)
+                return;
+
+            //Check if click is on specific column 
+            if (e.ColumnIndex == dataGridView1.Columns["deleted"].Index)
+            {
+                //Put some logic here, for example to remove row from your binding list.
+                dataGridView1.Rows.RemoveAt(e.RowIndex);
+
+                // Or
+                // var data = (Product)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                // do something 
+            }
         }
     }
 }

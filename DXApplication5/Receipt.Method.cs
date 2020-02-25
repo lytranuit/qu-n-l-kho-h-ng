@@ -78,15 +78,6 @@ namespace DXApplication5
                 var ds = new DataSet();
                 dataAdapter.Fill(ds);
                 dataGridView3.DataSource = ds.Tables[0];
-                /// 
-                string queryString1 = "select CONCAT(DATEPART(Year, receipt.date) ,'-', DATEPART(Month, receipt.date)) as value from receipt where deleted = 0 ";
-                queryString1 += "group by DATEPART(Month, receipt.date) ,DATEPART(Year, receipt.date)" ;
-                SqlCommand command1 = new SqlCommand(queryString1, connection);
-
-                SqlDataAdapter dataAdapter1 = new SqlDataAdapter(command1);
-                DataTable ds1 = new DataTable();
-                dataAdapter1.Fill(ds1);
-                comboBox1.DataSource = ds1;
                 connection.Close();
             }
         }

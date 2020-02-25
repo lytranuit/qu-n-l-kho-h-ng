@@ -1,32 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="projectModelStoreContainer" CdmEntityContainer="projectEntities">
-    <EntitySetMapping Name="goods_issue">
-      <EntityTypeMapping TypeName="projectModel.goods_issue">
-        <MappingFragment StoreEntitySet="goods_issue">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="code" ColumnName="code" />
+    <EntitySetMapping Name="inventories">
+      <EntityTypeMapping TypeName="projectModel.inventory">
+        <MappingFragment StoreEntitySet="inventory">
+          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
-          <ScalarProperty Name="product_name" ColumnName="product_name" />
-          <ScalarProperty Name="product_code" ColumnName="product_code" />
-          <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="note" ColumnName="note" />
-          <ScalarProperty Name="deleted" ColumnName="deleted" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="goods_receipt">
-      <EntityTypeMapping TypeName="projectModel.goods_receipt">
-        <MappingFragment StoreEntitySet="goods_receipt">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="code" ColumnName="code" />
-          <ScalarProperty Name="product_id" ColumnName="product_id" />
-          <ScalarProperty Name="product_name" ColumnName="product_name" />
-          <ScalarProperty Name="product_code" ColumnName="product_code" />
-          <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="deleted" ColumnName="deleted" />
         </MappingFragment>
       </EntityTypeMapping>
