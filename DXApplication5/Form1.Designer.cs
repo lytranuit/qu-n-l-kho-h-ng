@@ -81,6 +81,9 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.simpleButton17 = new DevExpress.XtraEditors.SimpleButton();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.product_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
             this.label1 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -88,9 +91,6 @@
             this.productBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.receiptTableAdapter = new DXApplication5.projectDataSetTableAdapters.receiptTableAdapter();
             this.product_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.product_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.product_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.navigationPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource1)).BeginInit();
@@ -567,6 +567,25 @@
             this.dataGridView5.TabIndex = 5;
             this.dataGridView5.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
             // 
+            // product_id
+            // 
+            this.product_id.DataPropertyName = "product_id";
+            this.product_id.HeaderText = "product_id";
+            this.product_id.Name = "product_id";
+            this.product_id.Visible = false;
+            // 
+            // product_name
+            // 
+            this.product_name.DataPropertyName = "product_name";
+            this.product_name.HeaderText = "Tên sản phẩm";
+            this.product_name.Name = "product_name";
+            // 
+            // inventory
+            // 
+            this.inventory.DataPropertyName = "inventory";
+            this.inventory.HeaderText = "Tồn kho";
+            this.inventory.Name = "inventory";
+            // 
             // simpleButton16
             // 
             this.simpleButton16.Location = new System.Drawing.Point(297, 4);
@@ -607,25 +626,6 @@
             this.product_code.DataPropertyName = "code";
             this.product_code.HeaderText = "Mã sản phẩm";
             this.product_code.Name = "product_code";
-            // 
-            // product_id
-            // 
-            this.product_id.DataPropertyName = "product_id";
-            this.product_id.HeaderText = "product_id";
-            this.product_id.Name = "product_id";
-            this.product_id.Visible = false;
-            // 
-            // product_name
-            // 
-            this.product_name.DataPropertyName = "product_name";
-            this.product_name.HeaderText = "Tên sản phẩm";
-            this.product_name.Name = "product_name";
-            // 
-            // inventory
-            // 
-            this.inventory.DataPropertyName = "inventory";
-            this.inventory.HeaderText = "Tồn kho";
-            this.inventory.Name = "inventory";
             // 
             // Form1
             // 

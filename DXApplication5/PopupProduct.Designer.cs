@@ -209,7 +209,6 @@ namespace DXApplication5
             // 
             resources.ApplyResources(this.product_code, "product_code");
             this.product_code.Name = "product_code";
-            this.product_code.ReadOnly = true;
             this.product_code.TextChanged += new System.EventHandler(this.product_code_TextChanged);
             // 
             // product_name
@@ -279,7 +278,6 @@ namespace DXApplication5
             // 
             // button1
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;

@@ -50,7 +50,7 @@ namespace DXApplication5
                     projectEntities db = new projectEntities();
 
                     product product = db.products.First(c => c.id == rowId);
-                    product.deleted = 1;
+                    db.products.Remove(product);
                     db.SaveChanges();
                 }
 

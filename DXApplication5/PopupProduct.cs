@@ -11,6 +11,9 @@ using DevExpress.XtraEditors;
 using System;
 using System.Data;
 using System.Linq;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
+using System.Data.Entity.Validation;
 
 namespace DXApplication5
 {
@@ -56,6 +59,8 @@ namespace DXApplication5
         }
         public void bingdingData(product product)
         {
+
+            product_code.ReadOnly = true;
             product_id = product.id;
             product_code.Text = product.code.Trim();
             product_name.Text = product.name.Trim();
@@ -67,19 +72,70 @@ namespace DXApplication5
             if(product_id > 0)
             {
                 product product = db.products.First(c => c.id == product_id);
-                product.name = product_name.Text;
+                product.name = product_name.Text.Trim();
+                if (product.name == "")
+                {
+                    XtraMessageBox.Show("Nhập đầy đủ tên và mã sản phẩm");
+                    return;
+                }
                 db.SaveChanges();
                 XtraMessageBox.Show("Update Success!");
             }
             else
             {
-                product product = new product();
-                product.name = product_name.Text;
-                db.products.Add(product);
-                db.SaveChanges();
-                XtraMessageBox.Show("Insert Success!");
+                try
+                {
+                    product product = new product();
+                    product.code = product_code.Text.Trim();
+                    product.name = product_name.Text.Trim();
+                    if (product.code == "" || product.name == "")
+                    {
+
+                        XtraMessageBox.Show("Nhập đầy đủ tên và mã sản phẩm");
+                        return;
+                    }
+                    db.products.Add(product);
+                    db.SaveChanges();
+                    XtraMessageBox.Show("Insert Success!");
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    // Retrieve the error messages as a list of strings.
+                    var errorMessages = ex.EntityValidationErrors
+                            .SelectMany(x => x.ValidationErrors)
+                            .Select(x => x.ErrorMessage);
+
+                    // Join the list to a single string.
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+                    XtraMessageBox.Show(fullErrorMessage);
+                    return;
+                }
+                
+                catch (DbUpdateException ex)
+                {
+                    if (ex.InnerException != null && ex.InnerException.InnerException != null)
+                    {
+                        SqlException sqlexception = ex.InnerException.InnerException as SqlException;
+                        switch (sqlexception.Number)
+                        {
+                            case 2627:  // Unique constraint error
+                            case 547:   // Constraint check violation
+                            case 2601:  // Duplicated key row error
+                                        // Constraint violation exception
+                                        // A custom exception of yours for concurrency issues
+                                XtraMessageBox.Show("Mã sản phẩm đã tồn tại");
+                                return;
+                            default:
+                                XtraMessageBox.Show("Error while trying to populate databases. " + ex.Message);
+                                return;
+
+                        }
+                    }
+                       
+                }
+               
             }
-            
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
 
         }
 
@@ -98,5 +154,7 @@ namespace DXApplication5
         {
 
         }
+      
     }
+
 }

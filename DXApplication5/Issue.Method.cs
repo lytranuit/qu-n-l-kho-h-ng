@@ -67,7 +67,7 @@ namespace DXApplication5
         private void searchIssue()
         {
             string valueSearch = textBox3.Text.Trim();
-            string queryString = "SELECT * FROM dbo.issue WHERE deleted = 0 and (code like @search)";
+            string queryString = "SELECT * FROM dbo.issue WHERE deleted = 0 and (code like @search) ORDER BY date DESC";
             string connectionString = "Data Source=.;Initial Catalog=project;Integrated Security=True";
 
             using (SqlConnection connection = new SqlConnection(connectionString))

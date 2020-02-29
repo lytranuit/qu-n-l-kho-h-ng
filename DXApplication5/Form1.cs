@@ -218,39 +218,57 @@ namespace DXApplication5
         private void simpleButton17_Click(object sender, EventArgs e)
         {
             string valueSearch = dateTimePicker1.Value.ToString("yyyy-M").Trim();
-            string queryString = "SELECT b.id as product_id,CONCAT(b.code,b.name) as product_name,SUM(a.quantity) as inventory FROM (select b.product_id,SUM(b.quantity) as quantity ";
-            queryString += " from receipt as a Join receipt_product as b ON a.id = b.receipt_id";
-            queryString += " where a.deleted = 0 and b.deleted = 0 and CONCAT(DATEPART(Year, a.date) ,'-', DATEPART(Month, a.date)) = @search ";
-            queryString += " GROUP BY product_id";
-            queryString += " UNION";
-            queryString += " select b.product_id,SUM(-b.quantity) as quantity";
-            queryString += " from issue as a Join issue_product as b ON a.id = b.issue_id";
-            queryString += " where a.deleted = 0 and b.deleted = 0 and CONCAT(DATEPART(Year, a.date) ,'-', DATEPART(Month, a.date)) = @search ";
-            queryString += " GROUP BY product_id) as a JOIN product as b ON a.product_id = b.id where b.deleted = 0 GROUP BY b.id,b.code,b.name";
-            
+            string queryString1 = "select CONCAT(DATEPART(Year, b.date) ,'-', DATEPART(Month,b.date)) as 'month' from dbo.receipt as b where deleted = 0 ";
+            queryString1 += " UNION ";
+            queryString1 += " select CONCAT(DATEPART(Year, b.date) ,'-', DATEPART(Month,b.date)) as 'month' from dbo.issue as b where deleted = 0 ";
+
+           
             string connectionString = "Data Source=.;Initial Catalog=project;Integrated Security=True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Parameters.AddWithValue("@search", valueSearch);
+                SqlCommand command = new SqlCommand(queryString1, connection);
 
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
                 dataAdapter.Fill(dt);
-                dataGridView5.DataSource = dt;
                 ////SAVE DATA
-
+                ///XÓA HÊT TABLE
                 projectEntities db = new projectEntities();
-                var list_deleted = db.inventories.Where(c => c.month == valueSearch).ToList();
+                var list_deleted = db.inventories.Where(c => c.deleted == 0).ToList();
                 list_deleted.ForEach(a => a.deleted = 1);
+                ////ADD TABLE
                 foreach (DataRow row in dt.Rows)
                 {
-                    inventory inventory = new inventory();
-                    inventory.product_id = Convert.ToInt32(row["product_id"]);
-                    inventory.quantity = Convert.ToInt32(row["inventory"]);
-                    inventory.month = valueSearch;
-                    db.inventories.Add(inventory);
+                    var month = row["month"].ToString();
+                    String[] strlist = month.Split(new[] {"-" }, StringSplitOptions.None);
+                    var firstDayOfMonth = new DateTime(Convert.ToInt32(strlist[0]), Convert.ToInt32(strlist[1]), 1);
+                    var firstDayOfMonthNext = firstDayOfMonth.AddMonths(1);
+
+                    string queryString = "SELECT b.id as product_id,CONCAT(b.code,b.name) as product_name,SUM(a.quantity) as inventory FROM (select b.product_id,SUM(b.quantity) as quantity ";
+                    queryString += " from receipt as a Join receipt_product as b ON a.id = b.receipt_id";
+                    queryString += " where a.deleted = 0 and b.deleted = 0 and date < @search ";
+                    queryString += " GROUP BY product_id";
+                    queryString += " UNION";
+                    queryString += " select b.product_id,SUM(-b.quantity) as quantity";
+                    queryString += " from issue as a Join issue_product as b ON a.id = b.issue_id";
+                    queryString += " where a.deleted = 0 and b.deleted = 0 and date < @search ";
+                    queryString += " GROUP BY product_id) as a JOIN product as b ON a.product_id = b.id where b.deleted = 0 GROUP BY b.id,b.code,b.name";
+                    SqlCommand command1 = new SqlCommand(queryString, connection);
+                    command1.Parameters.AddWithValue("@search", firstDayOfMonthNext);
+
+                    SqlDataAdapter dataAdapter1 = new SqlDataAdapter(command1);
+                    DataTable dt1 = new DataTable();
+                    dataAdapter1.Fill(dt1);
+                    foreach (DataRow row1 in dt1.Rows)
+                    {
+                        inventory inventory = new inventory();
+                        inventory.product_id = Convert.ToInt32(row1["product_id"]);
+                        inventory.quantity = Convert.ToInt32(row1["inventory"]);
+                        inventory.month = month;
+                        db.inventories.Add(inventory);
+                    }
+                       
                 }
                 db.SaveChanges();
                 connection.Close();

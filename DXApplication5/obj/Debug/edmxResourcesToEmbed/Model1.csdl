@@ -34,7 +34,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="code" Type="String" annotation:StoreGeneratedPattern="None" Unicode="true" MaxLength="10" />
     <Property Name="name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
     <Property Name="quantity" Type="Int32" DefaultValue="0" />
     <Property Name="deleted" Type="Byte" DefaultValue="0" />

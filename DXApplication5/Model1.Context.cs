@@ -19,12 +19,6 @@ namespace DXApplication5
             : base("name=projectEntities")
         {
         }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
         public DbSet<inventory> inventories { get; set; }
         public DbSet<issue> issues { get; set; }
         public DbSet<issue_product> issue_product { get; set; }

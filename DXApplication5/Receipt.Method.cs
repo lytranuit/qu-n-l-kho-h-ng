@@ -66,7 +66,7 @@ namespace DXApplication5
         private void searchReceipt()
         {
             string valueSearch = textBox2.Text.Trim();
-            string queryString = "SELECT * FROM dbo.receipt WHERE deleted = 0 and (code like @search)";
+            string queryString = "SELECT * FROM dbo.receipt WHERE deleted = 0 and (code like @search) ORDER BY date DESC";
             string connectionString = "Data Source=.;Initial Catalog=project;Integrated Security=True";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
